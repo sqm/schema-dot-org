@@ -10,7 +10,8 @@ require_relative 'place'
 
 module SchemaDotOrg
   class Organization < SchemaType
-    validated_attr :contact_points,    type: Array, allow_nil: true
+    validated_attr :address,           type: SchemaDotOrg::PostalAddress, allow_nil: true
+    validated_attr :contact_point,     type: Array, allow_nil: true
     validated_attr :email,             type: String, allow_nil: true
     validated_attr :founder,           type: SchemaDotOrg::Person, allow_nil: true
     validated_attr :founding_date,     type: Date, allow_nil: true

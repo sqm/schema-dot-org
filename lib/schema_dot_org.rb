@@ -77,12 +77,12 @@ module SchemaDotOrg
       attrs.map do |attr|
         # Skip both id and @id since we handle @id separately in to_json_struct
         next if attr.to_s == "id" || attr.to_s == "@id"
-        
+
         attr_string = attr.to_s.delete_prefix('@')
-        
+
         attr_name = snake_case_to_lower_camel_case(attr_string).sub('queryInput', 'query-input')
         attr_value = instance_variable_get(attr)
-  
+
         [attr_name, resolve_value(attr_value)]
       end.compact.to_h
     end
@@ -97,7 +97,7 @@ module SchemaDotOrg
 
       elsif is_schema_type?(value)
         value.to_json_struct
-        
+
       else
         value
       end
@@ -135,6 +135,7 @@ require 'schema_dot_org/contact_point'
 require 'schema_dot_org/thing'
 require 'schema_dot_org/item_list'
 require 'schema_dot_org/list_item'
+require 'schema_dot_org/postal_address'
 require 'schema_dot_org/organization'
 require 'schema_dot_org/place'
 require 'schema_dot_org/product'
@@ -146,3 +147,7 @@ require 'schema_dot_org/web_page'
 require 'schema_dot_org/answer'
 require 'schema_dot_org/question'
 require 'schema_dot_org/faq_page'
+require 'schema_dot_org/entry_point'
+require 'schema_dot_org/insurance_agency'
+require 'schema_dot_org/quote_action'
+require 'schema_dot_org/service'
